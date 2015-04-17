@@ -34,6 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripConectar = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTogleLector = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeBASCULACOPEOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,13 +54,15 @@
             this.labelEstado = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelAvisos = new System.Windows.Forms.Label();
-            this.radioButtonInitial = new System.Windows.Forms.RadioButton();
-            this.radioButtonFinal = new System.Windows.Forms.RadioButton();
             this.groupBoxInventory = new System.Windows.Forms.GroupBox();
-            this.radioButtonWeight = new System.Windows.Forms.RadioButton();
-            this.radioButtonInventory = new System.Windows.Forms.RadioButton();
+            this.radioButtonFinal = new System.Windows.Forms.RadioButton();
+            this.radioButtonInitial = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonInventory = new System.Windows.Forms.RadioButton();
+            this.radioButtonWeight = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelLector = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBascula)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLector)).BeginInit();
@@ -105,7 +108,8 @@
             // herramientasToolStripMenuItem
             // 
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripConectar});
+            this.toolStripConectar,
+            this.toolStripTogleLector});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.herramientasToolStripMenuItem.Text = "&Herramientas";
@@ -113,9 +117,15 @@
             // toolStripConectar
             // 
             this.toolStripConectar.Name = "toolStripConectar";
-            this.toolStripConectar.Size = new System.Drawing.Size(122, 22);
+            this.toolStripConectar.Size = new System.Drawing.Size(137, 22);
             this.toolStripConectar.Text = "&Conectar";
             this.toolStripConectar.Click += new System.EventHandler(this.conectarToolStripMenuItem_Click);
+            // 
+            // toolStripTogleLector
+            // 
+            this.toolStripTogleLector.Name = "toolStripTogleLector";
+            this.toolStripTogleLector.Size = new System.Drawing.Size(137, 22);
+            this.toolStripTogleLector.Text = "&TogleLector";
             // 
             // ayudaToolStripMenuItem
             // 
@@ -253,13 +263,13 @@
             // 
             // buttonReadings
             // 
-            this.buttonReadings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(68)))), ((int)(((byte)(121)))));
+            this.buttonReadings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.buttonReadings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonReadings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonReadings.FlatAppearance.BorderSize = 2;
             this.buttonReadings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(37)))), ((int)(((byte)(97)))));
             this.buttonReadings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReadings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReadings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReadings.Location = new System.Drawing.Point(413, 319);
             this.buttonReadings.Name = "buttonReadings";
             this.buttonReadings.Size = new System.Drawing.Size(170, 127);
@@ -271,18 +281,20 @@
             // pictureBoxEstado
             // 
             this.pictureBoxEstado.BackColor = System.Drawing.Color.Red;
-            this.pictureBoxEstado.Location = new System.Drawing.Point(26, 60);
+            this.pictureBoxEstado.Location = new System.Drawing.Point(12, 70);
             this.pictureBoxEstado.Name = "pictureBoxEstado";
-            this.pictureBoxEstado.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxEstado.Size = new System.Drawing.Size(39, 39);
             this.pictureBoxEstado.TabIndex = 24;
             this.pictureBoxEstado.TabStop = false;
             // 
             // labelEstado
             // 
             this.labelEstado.AutoSize = true;
+            this.labelEstado.BackColor = System.Drawing.Color.Black;
             this.labelEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstado.Location = new System.Drawing.Point(82, 79);
+            this.labelEstado.ForeColor = System.Drawing.Color.White;
+            this.labelEstado.Location = new System.Drawing.Point(57, 79);
             this.labelEstado.Name = "labelEstado";
             this.labelEstado.Size = new System.Drawing.Size(155, 20);
             this.labelEstado.TabIndex = 25;
@@ -302,6 +314,7 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "Área de mensajes importantes!";
             this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // labelAvisos
             // 
@@ -314,36 +327,13 @@
             this.labelAvisos.Text = "Avisos";
             this.labelAvisos.Visible = false;
             // 
-            // radioButtonInitial
-            // 
-            this.radioButtonInitial.AutoSize = true;
-            this.radioButtonInitial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonInitial.Location = new System.Drawing.Point(111, 37);
-            this.radioButtonInitial.Name = "radioButtonInitial";
-            this.radioButtonInitial.Size = new System.Drawing.Size(67, 20);
-            this.radioButtonInitial.TabIndex = 31;
-            this.radioButtonInitial.Text = "Inicial";
-            this.radioButtonInitial.UseVisualStyleBackColor = true;
-            this.radioButtonInitial.Click += new System.EventHandler(this.radioButtonInitial_Click);
-            // 
-            // radioButtonFinal
-            // 
-            this.radioButtonFinal.AutoSize = true;
-            this.radioButtonFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonFinal.Location = new System.Drawing.Point(316, 37);
-            this.radioButtonFinal.Name = "radioButtonFinal";
-            this.radioButtonFinal.Size = new System.Drawing.Size(60, 20);
-            this.radioButtonFinal.TabIndex = 32;
-            this.radioButtonFinal.TabStop = true;
-            this.radioButtonFinal.Text = "Final";
-            this.radioButtonFinal.UseVisualStyleBackColor = true;
-            this.radioButtonFinal.Click += new System.EventHandler(this.radioButtonInitial_Click);
-            // 
             // groupBoxInventory
             // 
+            this.groupBoxInventory.BackColor = System.Drawing.Color.Black;
             this.groupBoxInventory.Controls.Add(this.radioButtonFinal);
             this.groupBoxInventory.Controls.Add(this.radioButtonInitial);
             this.groupBoxInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxInventory.ForeColor = System.Drawing.Color.White;
             this.groupBoxInventory.Location = new System.Drawing.Point(12, 230);
             this.groupBoxInventory.Name = "groupBoxInventory";
             this.groupBoxInventory.Size = new System.Drawing.Size(571, 76);
@@ -351,44 +341,77 @@
             this.groupBoxInventory.TabStop = false;
             this.groupBoxInventory.Text = "Inventario";
             // 
-            // radioButtonWeight
+            // radioButtonFinal
             // 
-            this.radioButtonWeight.AutoSize = true;
-            this.radioButtonWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonWeight.Location = new System.Drawing.Point(316, 40);
-            this.radioButtonWeight.Name = "radioButtonWeight";
-            this.radioButtonWeight.Size = new System.Drawing.Size(241, 20);
-            this.radioButtonWeight.TabIndex = 35;
-            this.radioButtonWeight.TabStop = true;
-            this.radioButtonWeight.Text = "Registrar peso de botella llena";
-            this.radioButtonWeight.UseVisualStyleBackColor = true;
-            this.radioButtonWeight.CheckedChanged += new System.EventHandler(this.radioButtonWeight_CheckedChanged);
+            this.radioButtonFinal.AutoSize = true;
+            this.radioButtonFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonFinal.ForeColor = System.Drawing.Color.White;
+            this.radioButtonFinal.Location = new System.Drawing.Point(269, 37);
+            this.radioButtonFinal.Name = "radioButtonFinal";
+            this.radioButtonFinal.Size = new System.Drawing.Size(66, 24);
+            this.radioButtonFinal.TabIndex = 32;
+            this.radioButtonFinal.TabStop = true;
+            this.radioButtonFinal.Text = "Final";
+            this.radioButtonFinal.UseVisualStyleBackColor = true;
+            this.radioButtonFinal.CheckedChanged += new System.EventHandler(this.radioButtonFinal_CheckedChanged);
+            this.radioButtonFinal.Click += new System.EventHandler(this.radioButtonInitial_Click);
+            // 
+            // radioButtonInitial
+            // 
+            this.radioButtonInitial.AutoSize = true;
+            this.radioButtonInitial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonInitial.ForeColor = System.Drawing.Color.White;
+            this.radioButtonInitial.Location = new System.Drawing.Point(64, 37);
+            this.radioButtonInitial.Name = "radioButtonInitial";
+            this.radioButtonInitial.Size = new System.Drawing.Size(74, 24);
+            this.radioButtonInitial.TabIndex = 31;
+            this.radioButtonInitial.Text = "Inicial";
+            this.radioButtonInitial.UseVisualStyleBackColor = true;
+            this.radioButtonInitial.CheckedChanged += new System.EventHandler(this.radioButtonInitial_CheckedChanged);
+            this.radioButtonInitial.Click += new System.EventHandler(this.radioButtonInitial_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Black;
+            this.groupBox1.Controls.Add(this.radioButtonInventory);
+            this.groupBox1.Controls.Add(this.radioButtonWeight);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(12, 138);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(568, 76);
+            this.groupBox1.TabIndex = 34;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Opciones de lectura";
             // 
             // radioButtonInventory
             // 
             this.radioButtonInventory.AutoSize = true;
-            this.radioButtonInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonInventory.Location = new System.Drawing.Point(111, 40);
+            this.radioButtonInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonInventory.ForeColor = System.Drawing.Color.White;
+            this.radioButtonInventory.Location = new System.Drawing.Point(64, 40);
             this.radioButtonInventory.Name = "radioButtonInventory";
-            this.radioButtonInventory.Size = new System.Drawing.Size(94, 20);
+            this.radioButtonInventory.Size = new System.Drawing.Size(107, 24);
             this.radioButtonInventory.TabIndex = 34;
             this.radioButtonInventory.Text = "Inventario";
             this.radioButtonInventory.UseVisualStyleBackColor = true;
             this.radioButtonInventory.CheckedChanged += new System.EventHandler(this.radioButtonInventory_CheckedChanged);
             this.radioButtonInventory.MouseClick += new System.Windows.Forms.MouseEventHandler(this.radioButtonInventory_MouseClick);
             // 
-            // groupBox1
+            // radioButtonWeight
             // 
-            this.groupBox1.Controls.Add(this.radioButtonInventory);
-            this.groupBox1.Controls.Add(this.radioButtonWeight);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 138);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(568, 76);
-            this.groupBox1.TabIndex = 34;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Opciones de lecturas";
+            this.radioButtonWeight.AutoSize = true;
+            this.radioButtonWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonWeight.ForeColor = System.Drawing.Color.White;
+            this.radioButtonWeight.Location = new System.Drawing.Point(269, 40);
+            this.radioButtonWeight.Name = "radioButtonWeight";
+            this.radioButtonWeight.Size = new System.Drawing.Size(272, 24);
+            this.radioButtonWeight.TabIndex = 35;
+            this.radioButtonWeight.TabStop = true;
+            this.radioButtonWeight.Text = "Registrar peso de botella llena";
+            this.radioButtonWeight.UseVisualStyleBackColor = true;
+            this.radioButtonWeight.Visible = false;
+            this.radioButtonWeight.CheckedChanged += new System.EventHandler(this.radioButtonWeight_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -396,15 +419,45 @@
             this.pictureBox1.Location = new System.Drawing.Point(450, 32);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
+            // 
+            // labelLector
+            // 
+            this.labelLector.AutoSize = true;
+            this.labelLector.BackColor = System.Drawing.Color.Black;
+            this.labelLector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelLector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLector.ForeColor = System.Drawing.Color.White;
+            this.labelLector.Location = new System.Drawing.Point(339, 79);
+            this.labelLector.Name = "labelLector";
+            this.labelLector.Size = new System.Drawing.Size(78, 20);
+            this.labelLector.TabIndex = 36;
+            this.labelLector.Text = "RFIDME";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Black;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(312, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(132, 20);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Lector utilizado";
             // 
             // fmrMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(178)))), ((int)(((byte)(214)))));
+            this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(592, 463);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelLector);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxInventory);
@@ -425,8 +478,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxBascula);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "fmrMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BASCULA-COPEO";
@@ -473,15 +528,18 @@
         private System.Windows.Forms.Label labelEstado;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label labelAvisos;
-        private System.Windows.Forms.RadioButton radioButtonInitial;
-        private System.Windows.Forms.RadioButton radioButtonFinal;
         private System.Windows.Forms.GroupBox groupBoxInventory;
-        private System.Windows.Forms.RadioButton radioButtonWeight;
-        private System.Windows.Forms.RadioButton radioButtonInventory;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripConectar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripTogleLector;
+        private System.Windows.Forms.Label labelLector;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton radioButtonFinal;
+        private System.Windows.Forms.RadioButton radioButtonInitial;
+        private System.Windows.Forms.RadioButton radioButtonInventory;
+        private System.Windows.Forms.RadioButton radioButtonWeight;
     }
 }
 

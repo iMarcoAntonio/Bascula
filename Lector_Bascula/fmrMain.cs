@@ -19,6 +19,7 @@ namespace Lector_Bascula
     public partial class fmrMain : Form
     {   
         public reader reader;
+        public reader reader2;
         private List<String> puertos;
         private String puerto;
         private String readerSelected;
@@ -31,6 +32,7 @@ namespace Lector_Bascula
         private String epc;
         private Event ev;
         private Config config;
+        private bool service = true;
 
         public fmrMain()
         {
@@ -69,10 +71,12 @@ namespace Lector_Bascula
             this.peso = "";
             this.epc = "";
             this.readerSelected = "RFIDME";
+            this.labelLector.Text = "RFIDME";
             this.puertoBascula = new SerialPort();
             this.puertoBascula.BaudRate = 115200;
             this.puertoBascula.ReadTimeout = 2000;
             this.reader = new reader();
+            this.reader2 = new reader();
             this.ConectarConDispositivos();
             this.ev = new Event();
             ev.GET();
@@ -80,8 +84,59 @@ namespace Lector_Bascula
             this.radioButtonInitial.Checked = true;
             this.radioButtonInventory.Checked = true;
             CheckForIllegalCrossThreadCalls = false;
+         /*   if (service)
+            {
+                this.hilo = true;
+                this.thread = new Thread(new ThreadStart(lecturasServicio));
+                this.thread.Start();
+            }*/
         }
 
+        private void lecturasServicio()
+        {
+            string[] epcs = null;
+            Service service;
+
+            while (hilo)
+            {
+                if ((epcs = readEPC()).Length > 0)
+                {
+                    service = new Service(epcs);
+                    textBox1.Text = service.realizePost();
+                }
+            }
+        }
+
+        private string[] readEPC()
+        {
+            String data = "No tags found";
+            String[] epcs = null;
+            List<String> listEpcs = new List<string>();
+            int intentos = 0;
+
+            try
+            {
+                while (intentos != 20)
+                {
+                    data = reader.ReadEPC(false, ",");
+                    if (data != "No tags found")
+                    {
+                        epcs = data.Split(new char[] {','});
+                        foreach (String str in epcs)
+                        {
+                            if (!listEpcs.Contains(str))
+                                listEpcs.Add(str);
+                        }
+                    }
+                    intentos++;
+                }
+                return listEpcs.ToArray();
+            }
+            catch (Exception exc)
+            {
+                return null;
+            }
+        }
         private bool cargarConfiguracion()
         {
             try
@@ -114,9 +169,20 @@ namespace Lector_Bascula
                 this.pictureBoxEstado.BackColor = Color.Green;
                 this.labelEstado.Text = "CONECTADO";
                 this.toolStripConectar.Text = "Restart";
-                this.textBox1.Text = "¡¡¡CONEXIÓN CORRECTA!!!" + Environment.NewLine+"¡LISTO PARA LEER!";
+                this.textBox1.Text = "¡¡¡CONEXIÓN CORRECTA!!!" + Environment.NewLine + "¡LISTO PARA LEER!";
                 return true;
             }
+           /* else
+            {
+                if (this.ConectaConLector2())
+                {
+                    this.textBox1.Text = "¡¡¡CONEXIÓN CORRECTA PARA SERVICIOS!!!" + Environment.NewLine + "¡LISTO PARA LEER!";
+                    this.labelEstado.Text = "CONECTADO";
+                    this.toolStripConectar.Text = "Restart";
+                    this.pictureBoxEstado.BackColor = Color.Green;
+                    return true;
+                }
+            }*/
             return false;
         }
 
@@ -129,13 +195,47 @@ namespace Lector_Bascula
                 {
                     if (this.readerSelected.Equals("RU824"))
                     {
-                        this.reader.setDwellTime(50);
+                        this.reader.setDwellTime(10);
                         this.reader.setNumInvCyc(50);
                         this.reader.setPower(240);
                     }
                     else
                     {
                         this.reader.setPower(18);
+                    }
+                    this.labelAvisos.Text = "Se conectó correctamente el lector " + this.readerSelected;
+                    this.pictureBoxLector.BackColor = Color.Green;
+                    return true;
+                }
+                else
+                {
+                    this.labelAvisos.Text = "No se logró establecer comunicación.";
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                this.labelAvisos.Text = "No se logró establecer comunicación.\n" + ex.Message;
+                return false;
+            }
+        }
+
+        private bool ConectaConLector2()
+        {
+            try
+            {
+                this.reader2.Activation("Demo");
+                if (this.reader2.Connect(this.readerSelected).Equals("Connected"))
+                {
+                    if (this.readerSelected.Equals("RU824"))
+                    {
+                        this.reader2.setDwellTime(10);
+                        this.reader2.setNumInvCyc(50);
+                        this.reader2.setPower(240);
+                    }
+                    else
+                    {
+                        this.reader2.setPower(18);
                     }
                     this.labelAvisos.Text = "Se conectó correctamente el lector " + this.readerSelected;
                     this.pictureBoxLector.BackColor = Color.Green;
@@ -479,7 +579,7 @@ namespace Lector_Bascula
 
         private void radioButtonWeight_CheckedChanged(object sender, EventArgs e)
         {
-            this.groupBoxInventory.Enabled = false;
+            this.groupBoxInventory.Visible = false;
             this.radioButtonInitial.Checked = false;
             this.radioButtonFinal.Checked = false;
             this.buttonReadings.Focus();
@@ -487,7 +587,7 @@ namespace Lector_Bascula
 
         private void radioButtonInventory_CheckedChanged(object sender, EventArgs e)
         {
-            this.groupBoxInventory.Enabled = true;
+            this.groupBoxInventory.Visible = true;
             this.radioButtonInitial.Checked = true;
             this.buttonReadings.Focus();
         }
@@ -500,6 +600,21 @@ namespace Lector_Bascula
         private void radioButtonInventory_MouseClick(object sender, MouseEventArgs e)
         {
             this.buttonReadings.Focus();
+        }
+
+        private void radioButtonInitial_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonFinal_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

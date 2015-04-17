@@ -73,6 +73,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bulk.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="Weight_Bottle.cs" />
     <EmbeddedResource Include="fmrMain.resx">
       <DependentUpon>fmrMain.cs</DependentUpon>

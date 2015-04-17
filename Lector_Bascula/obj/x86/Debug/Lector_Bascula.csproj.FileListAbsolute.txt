@@ -12,3 +12,16 @@ C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\Lector_Bascula\Lector
 C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\Lector_Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.pdb
 C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\Lector_Bascula\Lector_Bascula\bin\Debug\Epc.dll
 C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\Lector_Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.fmrMain.resources
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.exe
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.pdb
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\bin\Debug\Lector_Bascula.exe
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\bin\Debug\Lector_Bascula.pdb
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\bin\Debug\Epc.dll
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\bin\Debug\RestSharp.dll
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\bin\Debug\RestSharp.xml
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.csprojResolveAssemblyReference.cache
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.fmrMain.resources
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.Properties.Resources.resources
+C:\Users\Marco\Documents\Grupo hqh\Proyectos\Visual Studio\En desarrollo\Bascula\Lector_Bascula\obj\x86\Debug\Lector_Bascula.csproj.GenerateResource.Cache
